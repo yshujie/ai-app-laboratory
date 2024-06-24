@@ -7,4 +7,5 @@ uvicorn
 # 其他依赖
 requests
 numpy
+pydantic
 python-dotenv
