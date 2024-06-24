@@ -4,11 +4,11 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - http_proxy=http://172.17.0.1:20171
-        - https_proxy=http://172.17.0.1:20171
+        - http_proxy=${HTTP_PROXY}
+        - https_proxy=${HTTPS_PROXY}
     environment:
-      - http_proxy=http://172.17.0.1:20171
-      - https_proxy=http://172.17.0.1:20171
+      - http_proxy=${HTTP_PROXY}
+      - https_proxy=${HTTPS_PROXY}
     image: ai_app_laboratory_image
     container_name: ai_app_laboratory_container
     ports:
