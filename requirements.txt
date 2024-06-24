@@ -7,3 +7,4 @@ uvicorn
 # 其他依赖
 requests
 numpy
+python-dotenv

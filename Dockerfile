@@ -23,5 +23,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 复制项目代码
 COPY . .
 
+# 复制 .env 文件
+COPY .env .
+
 # 设置启动命令
 CMD ["bash", "-c", "chmod +x /opt/ai-app-laboratory/watch.sh && /opt/ai-app-laboratory/watch.sh"]
