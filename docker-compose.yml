@@ -12,7 +12,7 @@ services:
     image: ai_app_laboratory_image
     container_name: ai_app_laboratory_container
     ports:
-      - "8000:8000"
+      - "8001:8001"
     volumes:
       - ~/code/python/github.com/yshujie/ai-app-laboratory:/opt/ai-app-laboratory
     working_dir: /opt/ai-app-laboratory
