@@ -1,0 +1,9 @@
+# 项目依赖
+langchain==0.2.1
+langchain-openai
+fastapi
+uvicorn
+
+# 其他依赖
+requests
+numpy

@@ -1,0 +1,19 @@
+services:
+  ai-app-laboratory:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - http_proxy=http://172.17.0.1:20171
+        - https_proxy=http://172.17.0.1:20171
+    environment:
+      - http_proxy=http://172.17.0.1:20171
+      - https_proxy=http://172.17.0.1:20171
+    image: ai_app_laboratory_image
+    container_name: ai_app_laboratory_container
+    ports:
+      - "8000:8000"
+    volumes:
+      - ~/code/python/github.com/yshujie/ai-app-laboratory:/opt/ai-app-laboratory
+    working_dir: /opt/ai-app-laboratory
+    network_mode: "bridge"
