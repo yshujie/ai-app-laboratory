@@ -11,7 +11,7 @@ def read_root():
 
 @app.get("/translate")
 def translate():
-    translator = Translator('English', 'Chaines')
+    translator = Translator('English', 'Chinese')
     message = "Hello Word"
     translated_message = translator.translate(message)
     return {"translated_message": translated_message}

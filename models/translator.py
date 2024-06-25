@@ -1,5 +1,6 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage 
+from langchain_core.outout_parsers import StrOutputParser
 
 class Translator:
     from_language: str = None
@@ -17,6 +18,7 @@ class Translator:
             HumanMessage(content=message)
         ]
 
-        AIMessage = self.model.invoke(messages)
-        return AIMessage.content
+        translateResult = self.model.invoke(messages)
+        parser = StrOutputParser()
+        return parser.invoke(translateResult)
     
