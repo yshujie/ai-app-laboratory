@@ -1,7 +1,7 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage 
 
-class Tanslator:
+class Translator:
     from_language: str = None
     target_language: str = None
     model: ChatOpenAI = None
