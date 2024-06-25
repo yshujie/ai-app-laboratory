@@ -1,6 +1,7 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage 
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 
 class Translator:
     from_language: str = None
@@ -13,12 +14,14 @@ class Translator:
         self.model = ChatOpenAI(model="gpt-3.5-turbo")
 
     def translate(self, message: str) -> str:
-        messages = [
-            SystemMessage(content="Translate the following message from {} to {}".format(self.from_language, self.target_language)),
-            HumanMessage(content=message)
-        ]
-
-        translateResult = self.model.invoke(messages)
         parser = StrOutputParser()
-        return parser.invoke(translateResult)
-    
+        system_template = "Translate the following into {language}:"
+        prompt_template = ChatPromptTemplate.from_messages(
+            [("system", system_template), ("user", "{text}")]
+        )
+
+        chain = prompt_template | self.model | parser
+        return chain.invoke({
+            "language": self.target_language,
+            "text": message
+        })
