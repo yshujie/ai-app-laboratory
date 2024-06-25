@@ -9,7 +9,8 @@ class Settings(BaseSettings):
     debug: bool
     port: int
     http_proxy: str = None
-    https_proxy: str = None    
+    https_proxy: str = None
+    openai_api_key: str = None
     
     class Config:
         env_file = ".env"
