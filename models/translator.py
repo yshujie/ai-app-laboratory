@@ -1,6 +1,6 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage 
-from langchain_core.outout_parsers import StrOutputParser
+from langchain_core.output_parsers import StrOutputParser
 
 class Translator:
     from_language: str = None
@@ -10,7 +10,7 @@ class Translator:
     def __init__(self, from_language: str, target_language: str):
         self.from_language = from_language
         self.target_language = target_language
-        self.model = ChatOpenAI(model="gpt-4")
+        self.model = ChatOpenAI(model="gpt-3.5-turbo")
 
     def translate(self, message: str) -> str:
         messages = [
