@@ -1,5 +1,5 @@
 from langchain_openai import ChatOpenAI
-from langchain_cron import HumanMessage
+from langchain_core.messages import HumanMessage
 
 class Chatbox:
     model: ChatOpenAI = None
@@ -9,7 +9,7 @@ class Chatbox:
 
     def chat1(self, message: str) -> str:
         responseOfAI = self.model.invoke(
-            [HumanMessage("Hi, I'm clack")]
+            [HumanMessage(message)]
         )
 
         return responseOfAI.content
