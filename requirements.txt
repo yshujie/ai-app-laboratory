@@ -1,6 +1,7 @@
 # 项目依赖
 langchain==0.2.1
 langchain-openai
+langchain_community
 fastapi
 uvicorn
 
