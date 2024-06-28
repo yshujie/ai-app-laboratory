@@ -2,8 +2,9 @@ from urllib import response
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 from langchain_core.chat_history import BaseChatMessageHistory
-from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_community.chat_message_histories import ChatMessageHistory
 
 store = {}
 
@@ -30,6 +31,36 @@ class Chatbox:
         config = {"configurable": {"session_id": "chat2"}}
         with_message_history = RunnableWithMessageHistory(
             self.model,
+            get_session_history
+        )
+
+        responseOfAI = with_message_history.invoke(
+            [HumanMessage(message)],
+            config
+        )
+
+        return responseOfAI.content
+
+    def chat3(self, message: str) -> str:
+        prompt = ChatPromptTemplate.from_messages(
+            [
+                (
+                    "system",
+                    "You are a helpful assistant. Answer all questions to the best of your ability."
+                ),
+                (
+                    "system",
+                    "Your name is Jarvis, you are Iron Man‘s AI assistant."
+                ),
+                MessagesPlaceholder(variable_name="messages")
+            ]
+        )
+
+        chain = prompt | self.model
+
+        config = {"configurable": {"session_id": "chat3"}}
+        with_message_history = RunnableWithMessageHistory(
+            chain,
             get_session_history
         )
 
