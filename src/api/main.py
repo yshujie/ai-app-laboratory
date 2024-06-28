@@ -30,3 +30,22 @@ def chat():
     message = messages[-1]
     response = chatbot.chat1(message)
     return {"response": response}
+
+@app.get("/chat2")
+def chat2():
+    chatbot = Chatbox()
+    messages = [
+        "Hello, I'm clack, a computer enjineer.",
+        "Do you know what's my name?",
+        "And what's your name?"
+    ]
+
+    response = []
+
+    # 遍历 messages，每次调用 chat2 方法
+    for message in messages:
+        answer = chatbot.chat2(message)
+        response.append(answer)
+        print(answer)
+
+    return {"response": response}
