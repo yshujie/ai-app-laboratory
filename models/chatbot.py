@@ -46,7 +46,7 @@ class Chatbox:
             [
                 (
                     "system",
-                    "You are a helpful assistant. Answer all questions to the best of your ability."
+                    "You are a helpful assistant. Answer all questions to the best of your ability in {language}."
                 ),
                 (
                     "system",
@@ -61,11 +61,12 @@ class Chatbox:
         config = {"configurable": {"session_id": "chat3"}}
         with_message_history = RunnableWithMessageHistory(
             chain,
-            get_session_history
+            get_session_history,
+            input_messages_key="messages"
         )
 
         responseOfAI = with_message_history.invoke(
-            [HumanMessage(message)],
+            {"messages": [HumanMessage(message)], "language": "Chinese"},
             config
         )
 
