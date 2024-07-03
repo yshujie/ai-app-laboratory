@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   ai-app-laboratory:
     build:
@@ -16,4 +17,28 @@ services:
     volumes:
       - ~/code/python/github.com/yshujie/ai-app-laboratory:/opt/ai-app-laboratory
     working_dir: /opt/ai-app-laboratory
-    network_mode: "bridge"
+    depends_on:
+      - mongodb
+    networks:
+      - ai-app-network
+
+  mongodb:
+    image: mongo:latest
+    container_name: ai_app_laboratory_mongodb_container
+    ports:
+      - "${MONGO_PORT}:${MONGO_PORT}"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      http_proxy: ${HTTP_PROXY}
+      https_proxy: ${HTTPS_PROXY}
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - ai-app-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  ai-app-network:

@@ -11,3 +11,4 @@ numpy
 pydantic
 python-dotenv
 pydantic-settings
+pymongo
