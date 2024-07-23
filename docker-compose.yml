@@ -1,22 +1,16 @@
 version: '3.8'
 services:
-  ai-app-laboratory:
+  user-portrait-artist:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - http_proxy=${HTTP_PROXY}
-        - https_proxy=${HTTPS_PROXY}
-    environment:
-      - http_proxy=${HTTP_PROXY}
-      - https_proxy=${HTTPS_PROXY}
-    image: ai_app_laboratory_image
-    container_name: ai_app_laboratory_container
+    image: user_portrait_artist_image
+    container_name: user_portrait_artist_container
     ports:
       - "${PORT}:${PORT}"
     volumes:
-      - ~/code/python/github.com/yshujie/ai-app-laboratory:/opt/ai-app-laboratory
-    working_dir: /opt/ai-app-laboratory
+      - ~/code/python/github.com/yshujie/user-portrait-artist:/opt/user-portrait-artist
+    working_dir: /opt/user-portrait-artist
     depends_on:
       - mongodb
     networks:
@@ -24,7 +18,7 @@ services:
 
   mongodb:
     image: mongo:latest
-    container_name: ai_app_laboratory_mongodb_container
+    container_name: user_portrait_artist_mongodb_container
     ports:
       - "${MONGO_PORT}:${MONGO_PORT}"
     environment:

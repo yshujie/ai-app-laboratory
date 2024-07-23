@@ -1,4 +1,4 @@
-# ai-app-laboratory
+# user-portrait-artist
 
 人工智能探索项目
 
@@ -6,7 +6,7 @@
 
 ## 软件架构
 ```
-ai-app-laboratory/
+user-portrait-artist/
 │
 ├── data/                   # 数据文件
 ├── models/                 # 模型文件
@@ -44,7 +44,7 @@ ai-app-laboratory/
 ```
 mkdir ~/code/python/github.com/yshujie
 cd ~/code/python/github.com/yshujie
-git clone git@github.com:yshujie/ai-app-laboratory.git
+git clone git@github.com:yshujie/user-portrait-artist.git
 ```
 
 #### 构建 Docker 镜像

@@ -10,7 +10,7 @@ ENV https_proxy=${https_proxy}
 RUN echo $http_proxy && echo $https_proxy
 
 # 设置工作目录
-WORKDIR /opt/ai-app-laboratory
+WORKDIR /opt/user-portrait-artist
 
 # 安装必要的系统工具，包括 procps 包以获得 pkill
 RUN apt-get update && \
@@ -27,4 +27,4 @@ COPY . .
 COPY .env .
 
 # 设置启动命令
-CMD ["bash", "-c", "chmod +x /opt/ai-app-laboratory/watch.sh && /opt/ai-app-laboratory/watch.sh"]
+CMD ["bash", "-c", "chmod +x /opt/user-portrait-artist/watch.sh && /opt/user-portrait-artist/watch.sh"]
